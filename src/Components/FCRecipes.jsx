@@ -1,6 +1,8 @@
 import React from 'react'
 import { useState } from 'react';
+import FCIngredient from './FCIngredient';
 import FCRecipe from './FCRecipe';
+import FCRecipecard from './FCRecipecard';
 
 export default function FCRecipes() {
 
@@ -34,6 +36,8 @@ const GetRecipes=()=>
   });     
   
 }
+
+
    
   return (
     <div>
@@ -46,15 +50,18 @@ const GetRecipes=()=>
         {recipearr.map((rec)=>
         {
           return(
-            <FCRecipe 
+            <div className='container'>
+            <div className='row'>
+            <FCRecipecard 
             key={rec.Id} 
             name={rec.Name}
             image={rec.Image}
             cookingmethod={rec.CookingMethod}
             cookingtime={rec.Time}
             inglist={rec.inglist}
-
             />
+            </div>
+            </div>
           )
         }
         )}

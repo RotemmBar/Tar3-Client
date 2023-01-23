@@ -1,6 +1,8 @@
 import React from 'react'
 import { useState } from 'react';
 import FCIngredient from './FCIngredient';
+import FCIngredientCard from './FCIngredientCard';
+import FCRecipe from './FCRecipe';
 
 export default function FCCreateRecipe() {
 
@@ -42,7 +44,7 @@ export default function FCCreateRecipe() {
     {
       alert(recipename);
       {setRecepiesCounter(prevC=>prevC+1)}
-      const apiUrl='https://localhost:44338/api/recipe'
+      const apiUrl='https://localhost:44338/api/createrecipe'
       fetch(apiUrl, 
         {
         method: 'POST',
@@ -52,6 +54,7 @@ export default function FCCreateRecipe() {
           Image:recipeimg,
           CookingMethod:recipemethod,
           Time:recipetime,
+          inglist:arrIngrec
         }
        ),
         headers: new Headers({
@@ -83,7 +86,7 @@ export default function FCCreateRecipe() {
       {
 
       setIngrec([...arrIngrec,arr[e.target.id]])
-      alert(e.target.id)
+      alert(arr[e.target.id].Id)
       console.log(arrIngrec)
 
       }
@@ -95,9 +98,6 @@ export default function FCCreateRecipe() {
         // setIngrec((arrIngrec)=> arrIngrec.filter((ing)=>ing.Id!=e.target.dataset.pid));
         console.log(arrIngrec)
 
-        // var array = arrIngrec;
-        // var index = arrIngrec.indexOf(e.target.dataset.pid); // Let's say it's Bob.
-        // delete array[index];
     
        }
      
@@ -105,7 +105,7 @@ export default function FCCreateRecipe() {
   
 
   return (
-    <div>
+    <div  className='col-sm-12' >
     <h1>Create New Recipe</h1>
     Recipe Name:
     <input type="text" value={recipename} name="name" onChange={(e)=>{setRecipename(e.target.value)}}/>
@@ -126,15 +126,15 @@ export default function FCCreateRecipe() {
     {arr.map((ing)=>
         {
           return(
-            <div>
-            <FCIngredient 
+            <div className='col-sm-12'>
+            <input id={ing.Id} type="checkbox" data-pid={ing.Id} onChange={(e)=>markedYes(e)}/>          
+            <FCIngredientCard 
             key={ing.Id} 
             name={ing.Name}
             image={ing.Image}
             calories={ing.Calories}
             Id={ing.Id}
             />
-      <input id={ing.Id} type="checkbox" data-pid={ing.Id} onChange={(e)=>markedYes(e)}/>          
       </div>
           )        
         }

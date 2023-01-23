@@ -7,6 +7,7 @@ import GetIngredients from './Components/FCCreateRecipe';
 import { Link, Route, Routes } from 'react-router-dom';
 import FCRecipes from './Components/FCRecipes';
 import FCNewIngredient from './Components/FCNewIngredients'
+import FCRecipecard from './Components/FCRecipecard';
 
 function App(){
   
@@ -25,6 +26,7 @@ function App(){
       <Route path="/" element={<FCRecipes/>} />
       <Route path="/createingredient" element={<FCNewIngredient/>} />
       <Route path="/createrecipe" element={<FCCreateRecipe />} />
+      <Route path="/recipecard" element={<FCRecipecard />} />
       {/* <Route path="/menu/:userid" element={menu}/> */}
       </Routes>
       </header>

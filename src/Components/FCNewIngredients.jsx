@@ -8,7 +8,7 @@ export default function FCNewIngredients()
   const [nametxt,setNameTxt]=useState('')
   const [imageTxt, setImageTxt] = useState('')
   const [caloriesTxt,setCaloriesTxt]=useState('')
-  const [counter,setCounter]=useState(2)
+  const [counter,setCounter]=useState(3)
     const AddNewIngredient=()=>
     {
       alert(nametxt)
@@ -46,7 +46,7 @@ export default function FCNewIngredients()
       }
       
   return (
-    <div>
+    <div className='col-sm-12'>
     <h1>Create New Ingredient</h1>
     Name:
     <input type="text" value={nametxt} name="name" onChange={(e)=>{setNameTxt(e.target.value)}}/>
@@ -62,49 +62,3 @@ export default function FCNewIngredients()
     </div>
   )
 }
-// const IngredientForm = (props) => {
-  //     const [name,setName] = useState('');
-  //     const [image,setImage] = useState('');
-  //     const [calories,setCalories] = useState('');
-  
-  //     const validateInputs=()=>{
-  //         if (name==='' || image ==='' || calories === '') {
-  //             alert("missing some values, please fill the entire form.");
-  //         }
-  //         else{
-  //             addIngredient();
-  //         }
-  //     }
-  //     const addIngredient = ()=>{
-  //         //post to server, using firebase firestore db for that
-  //         firestore().collection("ingredients").add({
-  //             name: name,
-  //             image: image,
-  //             calories: calories
-  //         })
-  //         .then(docRef=> {
-  //             console.log("Document written with ID: ", docRef.id);
-  //             alert("Ingredient succesfuly added to db")
-  //         })
-  //         .catch(error=> {
-  //             console.error("Error adding document: ", error);
-  //         });
-  //     }
-  //     const clearForm=()=>{
-  //         setName('');
-  //         setImage('');
-  //         setCalories('');
-  //     }
-  
-  //     return (  
-  //         <Row>
-  //             <Col xs="2"></Col>
-  //             <Col>
-  //                 <TextInput value={name} label="name" placeholder="enter ingredient name" changedText={(e)=>setName(e.target.value)}/>
-  //                 <TextInput value={image} label="image" placeholder="enter image url" changedText={(e)=>setImage(e.target.value)}/>
-  //                 <NumberInput value={calories} label="calorires" placeholder="enter dish calories" changedNumber={(e)=>setCalories(parseInt(e.target.value))}/>
-  //                 <FormButtons btnText="Create new ingredient" cancel={clearForm} submit={validateInputs} />
-  //             </Col>
-  //             <Col xs="2"></Col>
-  //         </Row>
-  //     );
